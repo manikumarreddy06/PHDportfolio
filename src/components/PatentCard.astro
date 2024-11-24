@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  number: string;
+  date: string;
+  description: string;
+  status: 'Granted' | 'Pending';
+}
+
+const { title, number, date, description, status } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-indigo-500">
+  <div class="flex justify-between items-start mb-4">
+    <h3 class="text-xl font-semibold text-gray-900">{title}</h3>
+    <span class={`px-3 py-1 rounded-full text-sm ${
+      status === 'Granted' 
+        ? 'bg-green-100 text-green-800' 
+        : 'bg-yellow-100 text-yellow-800'
+    }`}>
+      {status}
+    </span>
+  </div>
+  <p class="text-gray-600 mb-4">{description}</p>
+  <div class="flex justify-between text-sm text-gray-500">
+    <span>Patent #{number}</span>
+    <span>Filed: {date}</span>
+  </div>
+</div>

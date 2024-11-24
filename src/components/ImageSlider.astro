@@ -1,0 +1,128 @@
+---
+---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Autoplay, EffectFade, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+  import 'swiper/css/effect-fade';
+
+  new Swiper('.swiper', {
+    modules: [Navigation, Autoplay, EffectFade, Pagination],
+    loop: true,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+
+<div class="relative">
+  <div class="swiper w-full h-[600px]">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img 
+          src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66"
+          alt="Research Lab"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <h2 class="text-white text-4xl font-bold">Research Laboratory</h2>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img 
+          src="https://images.unsplash.com/photo-1532094349884-543bc11b234d"
+          alt="Scientific Equipment"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <h2 class="text-white text-4xl font-bold">Advanced Equipment</h2>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img 
+          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+          alt="Conference Presentation"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <h2 class="text-white text-4xl font-bold">Conference Presentations</h2>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img 
+          src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173"
+          alt="Research Team"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <h2 class="text-white text-4xl font-bold">Research Team</h2>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img 
+          src="https://images.unsplash.com/photo-1507413245164-6160d8298b31"
+          alt="Publication Success"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <h2 class="text-white text-4xl font-bold">Publications</h2>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next text-white"></div>
+    <div class="swiper-button-prev text-white"></div>
+    
+    <!-- Pagination dots -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<style>
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 1.5rem;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: white;
+    opacity: 0.7;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+</style>

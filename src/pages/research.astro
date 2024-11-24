@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const researchAreas = [
+  {
+    title: "Nanomedicine and Theranostics",
+    description: "This area focuses on the integration of nanotechnology into medicine to develop advanced systems for diagnosis and therapy (theranostics).",
+    projects: [
+      "Designed alginate dialdehyde encapsulated nanodots",
+      "Developed nanodots with ferrite cores",
+      "Engineered nano-fluorophores"
+    ],
+    image: "../images/image1.jpg"
+  },
+  {
+    title: "Advanced Drug Delivery Systems",
+    description: "Research in this area emphasizes the creation of innovative drug delivery vehicles.",
+    projects: [
+      "Investigated anti-cancer efficacy",
+      "Designed smart polymers",
+      "Explored hydrogelated nanoparticles"
+    ],
+    image: "../images/image2.jpg"
+  },
+  {
+    title: "Multimodal Imaging Techniques",
+    description: "This research area involves developing nanomaterials with dual or multiple functionalities.",
+    projects: [
+      "Synthesized carbon-coated nanodots",
+      "Developed Janus nanostructures",
+      "Created theranostic probes"
+    ],
+    image: "../images/image3.jpg"
+  },
+  {
+    title: "Molecular Genetics and Biomarker Identification",
+    description: "This area investigates genetic polymorphisms and their association with various diseases, identifying biomarkers that can improve early diagnosis and personalized treatment strategies.",
+    projects: [
+      "Association of TIMP2 418 G/C and MMP Gene Polymorphism in Urinary Cancers",
+      "Cytokine Gene Polymorphisms in Polycystic Ovary Syndrome",
+      "Gene Polymorphisms in Premature Aging"
+    ],
+    image: "../images/image4.jpg"
+  }
+];
+---
+
+<Layout title="Research - PhD Portfolio">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-4xl font-bold text-gray-900 mb-12">Research Areas</h1>
+    
+    <div class="space-y-24">
+      {researchAreas.map((area, index) => (
+        <div class={`flex flex-col lg:flex-row gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <div class="lg:w-1/2">
+            <img
+              src={area.image}
+              alt={area.title}
+              class="rounded-lg shadow-lg w-full h-[400px] object-cover"
+            />
+          </div>
+          <div class="lg:w-1/2 space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">{area.title}</h2>
+            <p class="text-lg text-gray-600 mb-8">{area.description}</p>
+            <div class="bg-gray-50 rounded-lg p-8">
+              <h3 class="text-xl font-semibold text-gray-900 mb-6">Current Projects</h3>
+              <ul class="space-y-4">
+                {area.projects.map(project => (
+                  <li class="flex items-start space-x-3">
+                    <span class="text-indigo-500 mt-1">▹</span>
+                    <span class="text-gray-700 text-lg">{project}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
