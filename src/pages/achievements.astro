@@ -2,26 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PatentCard from '../components/PatentCard.astro';
 
-const achievements = [
-  {
-    year: '2024',
-    title: 'Gold-coated Carbon Nanodots Patent',
-    description: 'Patent No. 545942 - Innovative nanoformulation for cancer therapeutics',
-    category: 'Patents'
-  },
-  {
-    year: '2023',
-    title: 'Doxorubicin-loaded Alginate Nanodots Patent',
-    description: 'Patent No. 431062 - Novel drug delivery system for multimodal imaging',
-    category: 'Patents'
-  },
-  {
-    year: '2023',
-    title: 'Copyright Portfolio',
-    description: 'Published seven copyrights covering topics from nanotechnology in agriculture to theranostic agents',
-    category: 'Copyrights'
-  }
-];
+type Status = "Granted" | "Registered";
 
 const patents = [
   {
@@ -29,81 +10,33 @@ const patents = [
     number: "545942",
     date: "2024-07",
     description: "Novel nanoformulation combining gold-coated carbon nanodots with ferrite core for enhanced therapeutic efficacy.",
-    status: "Granted"
+    status: "Granted" as Status
   },
   {
     title: "Doxorubicin Loaded Alginate Dialdehyde Encapsulated Carbon-Coated Manganese Ferrite Nanodots",
     number: "431062",
     date: "2023-05",
     description: "Innovative drug delivery system utilizing manganese ferrite nanodots for targeted therapy.",
-    status: "Granted"
+    status: "Granted" as Status
   },
   {
     title: "Multiple Copyrights",
     number: "Various",
     date: "2023-2024",
     description: "Portfolio of copyrights covering nanotechnology innovations and educational resources.",
-    status: "Registered"
+    status: "Registered" as Status
   }
-];
-
-const categories = ['All', ...new Set(achievements.map(a => a.category))];
+] as const;
 ---
 
 <Layout title="Achievements">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">Academic Achievements</h1>
-
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">Patents & Copyrights</h1>
+    
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {achievements.map(achievement => (
-        <div class="bg-white rounded-lg shadow-md p-6" data-category={achievement.category}>
-          <div class="text-sm text-gray-500 mb-2">{achievement.year}</div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">{achievement.title}</h3>
-          <p class="text-gray-600">{achievement.description}</p>
-          <span class="inline-block mt-4 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-            {achievement.category}
-          </span>
-        </div>
+      {patents.map((patent) => (
+        <PatentCard {...patent} />
       ))}
-    </div>
-
-    <div class="mt-12">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Patents</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        {patents.map(patent => (
-          <PatentCard {...patent} />
-        ))}
-      </div>
-    </div>
-
-    <div class="mt-12">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Publications & Presentations</h2>
-      <div class="bg-white rounded-lg shadow-md p-6">
-        <div class="mb-8">
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Journal Publications</h3>
-          <p class="text-gray-700 mb-4">
-            Authored over 30 peer-reviewed articles in high-impact journals such as Advanced Therapeutics, Journal of Molecular Histology, and ADMET and DMPK, focusing on nanomedicine, cancer therapy, and biomolecular engineering.
-          </p>
-        </div>
-
-        <div class="mb-8">
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Presentations and Workshops</h3>
-          <ul class="space-y-4">
-            <li>
-              <p class="text-gray-900 font-medium">"Recent Trends in Nanomedicine Using 3D Organoids"</p>
-              <p class="text-gray-600">International Virtual Conference on Drug Discovery & Translational Research, 2021</p>
-            </li>
-            <li>
-              <p class="text-gray-900 font-medium">"Ultrasound Responsive Drug Delivery"</p>
-              <p class="text-gray-600">Indo-USA International Conference, 2022</p>
-            </li>
-            <li>
-              <p class="text-gray-900 font-medium">Workshops</p>
-              <p class="text-gray-600">Conducted hands-on workshops on cell culture technology and animal handling</p>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 </Layout>
